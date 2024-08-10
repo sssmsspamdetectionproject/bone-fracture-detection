@@ -54,10 +54,7 @@ if uploaded_image is not None:
     # Open and display the image using PIL
     image = Image.open(uploaded_image)
     # Resize the image to 350x350 pixels
-    image = image.resize((350, 350))
-
-     # Convert the image to RGB
-    image = image.convert('RGB')
+    
     
     st.image(image, caption='Uploaded Image (Resized to 350x350)', use_column_width=True)
 
