@@ -6,8 +6,8 @@ import matplotlib.patches as patches
 from ultralytics import YOLO
 import io
 
-# Define the classes for skin cancer detection
-#classes = ["Benign", "Malignant"]
+# Define the classes
+classes = ['elbow positive', 'fingers positive', 'forearm fracture', 'humerus fracture', 'humerus', 'shoulder fracture', 'wrist positive']
 
 # Function to load the YOLO model
 def load_model(model_path):
@@ -31,9 +31,8 @@ def detect_and_plot(image, model):
         cls = detection.cls[0].cpu().numpy()
         rect = patches.Rectangle((x1, y1), x2-x1, y2-y1, linewidth=2, edgecolor='r', facecolor='none')
         ax.add_patch(rect)
-        #plt.text(x1, y1, f"{classes[int(cls)]} {conf:.2f}", color='white', fontsize=12, backgroundcolor='red')
-
-    plt.title('Bone Fracture Detection')
+        plt.text(x1, y1, f"{classes[int(cls)]} {conf:.2f}", color='white', fontsize=12, backgroundcolor='red')
+        
     plt.axis('off')
     
     # Save the plot to a BytesIO object to display in Streamlit
@@ -60,7 +59,7 @@ if uploaded_image is not None:
     image_np = np.array(image)
     
     # Load the YOLO model
-    model_path = 'Bone_Fracture_Detection_YoloV8n_Model.pt' 
+    model_path = 'Bone_Fracture_Detection_YoloV8n_Model.pt'  # Update this path to your model
     model = load_model(model_path)
     
     if model is not None:
