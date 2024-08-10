@@ -33,7 +33,7 @@ def detect_and_plot(image, model):
         ax.add_patch(rect)
         #plt.text(x1, y1, f"{classes[int(cls)]} {conf:.2f}", color='white', fontsize=12, backgroundcolor='red')
 
-    plt.title('Skin Cancer Detection')
+    plt.title('Bone Fracture Detection')
     plt.axis('off')
     
     # Save the plot to a BytesIO object to display in Streamlit
@@ -45,8 +45,8 @@ def detect_and_plot(image, model):
     return buf
 
 # Streamlit app setup
-st.set_page_config(page_title="Skin Cancer Detection", layout="centered")
-st.markdown("<h1 style='text-align: center; color: #FF0800;'>Skin Cancer Detection</h1>", unsafe_allow_html=True)
+st.set_page_config(page_title="Bone Fracture Detection", layout="centered")
+st.markdown("<h1 style='text-align: center; color: #FF0800;'>Bone Fracture Detection</h1>", unsafe_allow_html=True)
 
 st.subheader("Upload Image")
 uploaded_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
@@ -60,7 +60,7 @@ if uploaded_image is not None:
     image_np = np.array(image)
     
     # Load the YOLO model
-    model_path = 'C:/Users/shubh/Desktop/yolov8n.pt'  # Update this path to your skin cancer model
+    model_path = 'Bone_Fracture_Detection_YoloV8n_Model.pt' 
     model = load_model(model_path)
     
     if model is not None:
