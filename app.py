@@ -7,7 +7,7 @@ from ultralytics import YOLO
 import io
 
 # Define the classes
-classes = ['elbow positive', 'fingers positive', 'forearm fracture', 'humerus fracture', 'humerus', 'shoulder fracture', 'wrist positive']
+classes = ['Fracture']
 
 # Function to load the YOLO model
 def load_model(model_path):
