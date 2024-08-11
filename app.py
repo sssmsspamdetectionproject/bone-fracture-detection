@@ -29,9 +29,9 @@ def detect_and_plot(image, model):
         x1, y1, x2, y2 = detection.xyxy[0].cpu().numpy()
         conf = detection.conf[0].cpu().numpy()
         cls = detection.cls[0].cpu().numpy()
-        rect = patches.Rectangle((x1, y1), x2-x1, y2-y1, linewidth=2, edgecolor='r', facecolor='none')
+        rect = patches.Rectangle((x1, y1), x2-x1, y2-y1, linewidth=2, edgecolor='g', facecolor='none')
         ax.add_patch(rect)
-        plt.text(x1, y1, f"{classes[int(cls)]}", color='white', fontsize=12, backgroundcolor='red')
+        plt.text(x1, y1, f"{classes[int(cls)]}", color='white', fontsize=12, backgroundcolor='green')
         
     plt.axis('off')
     
@@ -53,8 +53,6 @@ uploaded_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "pn
 if uploaded_image is not None:
     # Open and display the image using PIL
     image = Image.open(uploaded_image)
-    # Resize the image to 350x350 pixels
-    image = image.resize((350, 350))
     
     st.image(image, caption='Uploaded Image (Resized to 350x350)', use_column_width=True)
 
