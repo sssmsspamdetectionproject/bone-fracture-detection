@@ -24,6 +24,7 @@ def detect_and_plot(image, model):
     
     fig, ax = plt.subplots(figsize=(8, 8))
     ax.imshow(image)
+
     
     for detection in results.boxes:
         x1, y1, x2, y2 = detection.xyxy[0].cpu().numpy()
@@ -53,12 +54,16 @@ uploaded_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "pn
 if uploaded_image is not None:
     # Open and display the image using PIL
     image = Image.open(uploaded_image)
+     # Resize the image to 350x350 pixels
+    image = image.resize((350, 350))
+     # Convert the image to RGB
+    image = image.convert('RGB')
     
     st.image(image, caption='Uploaded Image (Resized to 350x350)', use_column_width=True)
 
     # Convert PIL image to a format suitable for YOLO model
     image_np = np.array(image)
-    
+
     # Load the YOLO model
     model_path = 'Bone_Fracture_Detection_YoloV8m_Model.pt'  # Update this path to your model
     model = load_model(model_path)
