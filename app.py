@@ -65,7 +65,7 @@ if uploaded_image is not None:
     image_np = np.array(image)
     
     # Load the YOLO model
-    model_path = 'Bone_Fracture_Detection_YoloV8s_Model.pt'  # Update this path to your model
+    model_path = 'Bone_Fracture_Detection_YoloV8m_Model.pt'  # Update this path to your model
     model = load_model(model_path)
     
     if model is not None:
